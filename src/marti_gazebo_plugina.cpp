@@ -1,11 +1,11 @@
-#include "car_gazebo_plugin.hpp"
+#include "marti_gazebo_plugina.hpp"
 
 #include <gazebo/physics/physics.hh>
 #include <gazebo_ros/node.hpp>
 #include <iostream>
 #include <gazebo/common/Time.hh>
 
-namespace car_gazebo_plugin {
+namespace marti_gazebo_plugina {
 
 CarGazeboPlugin::CarGazeboPlugin()
     : robot_namespace_{""},
