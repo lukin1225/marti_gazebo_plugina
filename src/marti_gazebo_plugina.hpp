@@ -1,5 +1,5 @@
-#ifndef CAR_GAZEBO_PLUGIN__CAR_GAZEBO_PLUGIN_HPP_
-#define CAR_GAZEBO_PLUGIN__CAR_GAZEBO_PLUGIN_HPP_
+#ifndef MARTI_GAZEBO_PLUGINA__MARTI_GAZEBO_PLUGINA_HPP_
+#define MARTI_GAZEBO_PLUGINA__MARTI_GAZEBO_PLUGINA_HPP_
 
 #include <tf2_ros/transform_broadcaster.h>
 #include <ackermann_msgs/msg/ackermann_drive_stamped.hpp>
@@ -240,6 +240,6 @@ class CarGazeboPlugin : public gazebo::ModelPlugin {
   }
 };
 
-}  // namespace car_gazebo_plugin
+}  // namespace marti_gazebo_plugina
 
-#endif  // CAR_GAZEBO_PLUGIN__CAR_GAZEBO_PLUGIN_HPP_
+#endif  // MARTI_GAZEBO_PLUGINA__MARTI_GAZEBO_PLUGINA_HPP_
