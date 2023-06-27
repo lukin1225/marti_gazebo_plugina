@@ -7,13 +7,13 @@
 
 namespace marti_gazebo_plugina {
 
-CarGazeboPlugin::CarGazeboPlugin()
+MartiGazeboPlugina::MartiGazeboPlugina()
     : robot_namespace_{""},
       last_sim_time_{0},
       last_update_time_{0},
       update_period_ms_{8} {}
 
-void CarGazeboPlugin::Load(gazebo::physics::ModelPtr model,
+void MartiGazeboPlugina::Load(gazebo::physics::ModelPtr model,
                            sdf::ElementPtr sdf) {
   // Get model and world references
   model_ = model;
@@ -92,23 +92,23 @@ void CarGazeboPlugin::Load(gazebo::physics::ModelPtr model,
     odom_pub = ros_node_->create_publisher<nav_msgs::msg::Odometry>("/" + model_->GetName() + "/odom", rclcpp::SensorDataQoS());
 
     // subscribe
-    joy_sub = ros_node_->create_subscription<sensor_msgs::msg::Joy>("/joy", 2, std::bind(&CarGazeboPlugin::joy_callback, this, std::placeholders::_1));
+    joy_sub = ros_node_->create_subscription<sensor_msgs::msg::Joy>("/joy", 2, std::bind(&MartiGazeboPlugina::joy_callback, this, std::placeholders::_1));
 
     ackermann_sub = ros_node_->create_subscription<ackermann_msgs::msg::AckermannDriveStamped>(
-      "/" + model_->GetName() + "/cmd_ackermann", 2, std::bind(&CarGazeboPlugin::ackermann_callback, this, std::placeholders::_1));
+      "/" + model_->GetName() + "/cmd_ackermann", 2, std::bind(&MartiGazeboPlugina::ackermann_callback, this, std::placeholders::_1));
     
     cmd_vel_sub = ros_node_->create_subscription<geometry_msgs::msg::Twist>(
       // "/" + model_->GetName() +
-       "/cmd_vel", 2, std::bind(&CarGazeboPlugin::twist_callback, this, std::placeholders::_1));
+       "/cmd_vel", 2, std::bind(&MartiGazeboPlugina::twist_callback, this, std::placeholders::_1));
 
   }
 
   // Hook into simulation update loop
   update_connection_ = gazebo::event::Events::ConnectWorldUpdateBegin(
-      std::bind(&CarGazeboPlugin::Update, this));
+      std::bind(&MartiGazeboPlugina::Update, this));
 }
 
-void CarGazeboPlugin::Update() {
+void MartiGazeboPlugina::Update() {
   auto cur_time = world_->SimTime();
   if (last_sim_time_ == 0) {
     last_sim_time_ = cur_time;
@@ -205,6 +205,6 @@ void CarGazeboPlugin::Update() {
   last_sim_time_ = cur_time;
 }
 
-GZ_REGISTER_MODEL_PLUGIN(CarGazeboPlugin)
+GZ_REGISTER_MODEL_PLUGIN(MartiGazeboPlugina)
 
 }  // namespace marti_gazebo_plugina
