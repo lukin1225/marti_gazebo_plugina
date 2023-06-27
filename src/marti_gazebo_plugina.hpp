@@ -94,9 +94,9 @@ class AckermannModel : public BicycleModel {
 
 namespace marti_gazebo_plugina {
 
-class CarGazeboPlugin : public gazebo::ModelPlugin {
+class MartiGazeboPlugina : public gazebo::ModelPlugin {
  public:
-  CarGazeboPlugin();
+  MartiGazeboPlugina();
 
   void Load(gazebo::physics::ModelPtr model, sdf::ElementPtr sdf);
 
